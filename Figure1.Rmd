@@ -1,0 +1,16 @@
+---
+title: "Figure1: R Notebook"
+output: html_notebook
+---
+## rank top 5 most important features/variables for 4 models, and color-coded y labels according to "_worst"(blue),"_mean"(red),"_se" group(green)
+```{r}
+v1 <- plot(treeImp, top = 5, main = "Classification Tree", 
+           scales = list(y = list(cex = 1.2, col = c("red","blue","blue","blue","blue"))))
+v2 <- plot(lrImp, top = 5, main = "Logistic Regression",
+           scales = list(y = list(cex = 1.2, col = c("red","red","green","green","red"))))
+v3 <- plot(rfImp, top = 5, main = "Random Forest",
+           scales = list(y = list(cex = 1.2, col = c("red","blue","blue","blue","blue"))))
+v4 <- plot(svmImp, top = 5, main = "svmRadial",
+           scales = list(y = list(cex = 1.2, col = c("blue","red","blue","blue","blue"))))
+grid.arrange(v1, v3, v4, v2, nrow = 2, ncol = 2)
+```
