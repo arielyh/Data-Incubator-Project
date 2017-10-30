@@ -1,0 +1,20 @@
+---
+title: "Figure2: R Notebook"
+output: html_notebook
+---
+## Boxplot distribution for concave_points(left) and radius(right) features between Benign and Malignant patients. Different caculation methods for each feature are color-coded as mean (red), se (green) and worst (blue).
+
+```{r}
+# concave_points boxplot
+c2 <- ggplot(data = concave_m, aes(x = diagnosis, y = value)) + 
+      geom_boxplot() + geom_jitter(aes(colour = variable)) + 
+      theme(legend.position=c(0,1), legend.justification=c(0,1), legend.background=element_blank())
+
+# radius boxplot
+r2 <- ggplot(data = radius_m, aes(x = diagnosis, y = value)) + 
+      geom_boxplot() + geom_jitter(aes(colour = variable)) + 
+      theme(legend.position=c(0,1), legend.justification=c(0,1), legend.background=element_blank())
+
+# display two subplot side by side
+grid.arrange(c2, r2, ncol = 2)
+```
